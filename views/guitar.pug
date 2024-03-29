@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", rel="stylesheet")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+  h1  Search Results Guitar
+  - let Guitars = [ { gname: "Acoustic Guitar", gcolor: "Red", gcost: 150 },{ gname: "Electric Guitar", gcolor: "Black", gcost: 500 }, { gname: "Bass Guitar", gcolor: "GreyAndOrange", gcost: 300 }]
+
+  div(class="container-fluid")
+    div(class="row")
+      each guitar, index in Guitars
+        div(class="col-sm-2", onclick=`buy(${index})`)
+          h3 #{guitar.gname}
+          p Color: #{guitar.gcolor}
+          p Cost: $#{guitar.gcost}
+      script.
+        function buy(i)
+        {
+         alert(`You purchased Item ${i+1}`) 
+        }
+
+   

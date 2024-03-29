@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", rel="stylesheet")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js")
+  script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+  h1= title
+  p Welcome to Sudha Assignment
+  button(type="button", class="btn btn-secondary", onclick="double()") I am a button
+  div#double Up the amount
+
+  script.
+    let value = 0;
+    let power = 1;
+
+    function double() {
+      value++;
+      power *= 2;
+      document.getElementById('double').innerText = `Two to the power ${value} is ${power}`;
+    }
