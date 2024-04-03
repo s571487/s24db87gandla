@@ -1,0 +1,12 @@
+doctype html
+html
+    head
+        title Costume List
+    body
+        h1 Costume List
+        ul
+            each costume in costumes
+                li
+                    h2= costume.costume_type
+                    p Size: #{costume.size}
+                    p Cost: #{costume.cost}
