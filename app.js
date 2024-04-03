@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-var resourceRouter = require('.\\routes\\resource');
+var resourceRouter = require('./routes/resource');
 app.use('/resource', resourceRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -69,7 +69,7 @@ db.once("open", function () {
   console.log("Connection to DB succeeded")
 });
 
-var Costume = require('.\\models\\costume.js');
+var Costume = require('./models/costume.js');
 
 
 async function recreateDB() {

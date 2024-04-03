@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var api_controller = require('..\\controllers\\api.js');
-var costume_controller = require('..\\models\\costumeController.js');
+var api_controller = require('../controllers/api.js');
+var costume_controller = require('../models/costumeController.js');
 
 router.get('/', api_controller.api);
 

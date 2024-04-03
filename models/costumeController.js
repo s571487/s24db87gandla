@@ -1,4 +1,4 @@
-var Costume = require('..\\models\\costume.js');
+var Costume = require('../models/costume.js');
 
 exports.costume_create_post = async function(req, res) {
     console.log(req.body); 
