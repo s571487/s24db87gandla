@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to update
+  else
+    - let costumeid = toShow._id
+    - let costume_type = toShow.costume_type
+    - let costumecost = toShow.cost
+    - let costumesize = toShow.size
+    - let actionid = "/resource/costumes/" + costumeid
+    script.
+      let actionid = "#{actionid}"
+    .card.mt-4
+      .card-body
+        form(id='CostumeForm', action=actionid, method="PUT")
+          .form-group.row(style='margin-bottom: 15px;')
+            label.col-sm-3.col-form-label(for='costume_type', style='font-weight: bold;') Costume Type:
+            .col-sm-9
+              input#costume_type.form-control(type='text', name='costume_type', value=costume_type, style='width: 100%;')
+          .form-group.row(style='margin-bottom: 15px;')
+            label.col-sm-3.col-form-label(for='size', style='font-weight: bold;') Costume Size:
+            .col-sm-9
+              input#size.form-control(type='text', name='size', value=costumesize, style='width: 100%;')
+          .form-group.row(style='margin-bottom: 15px;')
+            label.col-sm-3.col-form-label(for='cost', style='font-weight: bold;') Costume Cost:
+            .col-sm-9
+              input#cost.form-control(type='number', name='cost', value=costumecost, style='width: 100%;')
+
+          .form-group.row
+            .col-sm-9.offset-sm-3
+              button.btn.btn-primary(type='submit', style='background-color: #007bff; color: #fff; border: none; border-radius: 3px; cursor: pointer;') Update
+      script.
+        document.getElementById('CostumeForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target))
+          }).then(function(resp) {
+            if (resp.ok) {
+              alert("Update succeeded");
+              window.location.href = '/costumes'; 
+            } else {
+              throw new Error('Update failed');
+            }
+          }).catch(function(error) {
+            alert("Update failed " + error);
+          });
+        });
