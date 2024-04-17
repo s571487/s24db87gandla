@@ -68,12 +68,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 var resourceRouter = require('./routes/resource');
 app.use('/resource', resourceRouter);
+var costumeRouter = require('./routes/costume');
+app.use('/costume',costumeRouter)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/guitar', guitarRouter);
 app.use('/grid', gridRouter);
 app.use('/randomitem', randomitemRouter);
-app.get('/sudha', async (req, res) => {
+app.get('/costumes', async (req, res) => {
   try {
     const costumes = await Costume.find();
     res.render('sudha', { costumes: costumes });
